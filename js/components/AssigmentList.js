@@ -3,7 +3,7 @@ import Assigment from "./Assigment.js";
 export default {
   components: { Assigment },
   template: `
-    <section v-show="assigments.length">
+    <section v-show="assigments.length" class="border border-white rounded-xl p-4">
         <h2 class="font-bold">{{ title }}</h2>
         <ul class="mt-2">
             <Assigment 
