@@ -6,39 +6,52 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Laracast - Learn Vue</title>
+    <title>Laracast - Learn Vue - Episode 2</title>
     <script src="https://unpkg.com/vue@3"></script>
+    <style>
+      html,
+      body {
+        height: 100vh;
+      }
+      body {
+        /* Menggunakan tampilan grid untuk menempatkan konten di tengah */
+        display: grid;
+        /* Menempatkan konten di tengah secara horizontal dan vertikal */
+        place-items: center;
+      }
+      .bg-green {
+        background-color: green;
+      }
+      .bg-red {
+        background-color: red;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
-      <input
-        type="text"
-        v-model="greeting"
-      />
-      <p>
-        <!-- value dari data greeting di panggil dalam html -->
-        {{greeting}}
-        <!-- menghitung panjang dari value greeting -->
-        {{greeting.length}}
-      </p>
+      <!-- menggunakan binding Vue untuk menambahkan kelas dinamis berdasarkan nilai
+      active dan Mengatur event 'click' untuk memanggil metode 'toggle'-->
+      <button
+        :class="active ? 'bg-green' : 'bg-red'"
+        v-on:click="toggle"
+      >
+        Click me
+      </button>
     </div>
     <script>
       Vue.createApp({
         data() {
           return {
-            // value awal dari data 'greeting' adalah "Hello, Vue"
-            greeting: "Hello, Vue",
+            // Data awal 'active' diatur ke 'false'
+            active: false,
           };
         },
-        mounted() {
-          setTimeout(
-            () => {
-              // mengubah data dengan batas waktu
-              this.greeting = "Changed";
-            },
-            // dalam tiga detik data akan berubah menjadi Changed
-            3000
-          );
+        methods: {
+          // metode toggle
+          toggle() {
+            // untuk membalik nilai 'active' setiap kali tombol diklik
+            this.active = !this.active;
+          },
         },
       }).mount("#app");
     </script>
