@@ -9,61 +9,16 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Laracast - Learn Vue - Episode 6</title>
-    <!-- Memuat Vue.js versi 3 dari CDN -->
+    <title>Laracast - Learn Vue - Episode 7</title>
     <script src="https://unpkg.com/vue@3"></script>
-    <!-- Memuat Tailwind CSS dari CDN untuk styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-      /* Mengatur class is-loading */
-      @keyframes spinner {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .is-loading {
-        color: transparent !important;
-      }
-
-      .is-loading:before {
-        content: "";
-        box-sizing: border-box;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        margin-top: -10px;
-        margin-left: -10px;
-        border-radius: 50%;
-        border: 2px solid #ccc;
-        border-top-color: #000;
-        animation: spinner 0.6s linear infinite;
-      }
-    </style>
   </head>
   <body class="h-full grid place-items-center">
-    <div id="app">
-      <!-- Membuat container dengan menggunakan Flexbox untuk tata letak tombol -->
-      <div class="flex gap-2">
-        <!-- Menggunakan komponen 'app-button' yang diimpor dengan teks "Hello" dengan tipe 'muted' dan 'processing' -->
-        <app-button
-          type="muted"
-          :processing="true"
-        >
-          Hello
-        </app-button>
-        <!-- Menggunakan komponen 'app-button' dengan teks "Khoirul" dengan tipe 'primary' -->
-        <app-button type="primary">Khoirul</app-button>
-        <!-- Menggunakan komponen 'app-button' dengan teks "Fahmi" dengan tipe 'secondary' -->
-        <app-button type="secondary">Fahmi</app-button>
-      </div>
-    </div>
+    <div id="app"></div>
+    <!-- Tipe module menyatakan bahwa file JavaScript ini adalah modul ES6. -->
+    <!-- Dengan tipe module, Anda dapat menggunakan fitur impor dan ekspor ES6. -->
     <script type="module">
-      // Mengimpor komponen App dari file eksternal
-      import App from "../js/components/App.js";
+      import App from "./js/components/App.js";
       Vue.createApp(App).mount("#app");
     </script>
   </body>
