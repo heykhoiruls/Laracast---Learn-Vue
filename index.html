@@ -9,36 +9,62 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Laracast - Learn Vue - Episode 5</title>
+    <title>Laracast - Learn Vue - Episode 6</title>
     <!-- Memuat Vue.js versi 3 dari CDN -->
     <script src="https://unpkg.com/vue@3"></script>
     <!-- Memuat Tailwind CSS dari CDN untuk styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* Mengatur class is-loading */
+      @keyframes spinner {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .is-loading {
+        color: transparent !important;
+      }
+
+      .is-loading:before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        border-top-color: #000;
+        animation: spinner 0.6s linear infinite;
+      }
+    </style>
   </head>
   <body class="h-full grid place-items-center">
     <div id="app">
       <!-- Membuat container dengan menggunakan Flexbox untuk tata letak tombol -->
       <div class="flex gap-2">
-        <!-- Menggunakan komponen 'app-button' yang diimpor dengan teks "Hello" -->
-        <app-button>Hello</app-button>
-        <!-- Menggunakan komponen 'app-button' dengan teks "Khoirul" -->
-        <app-button>Khoirul</app-button>
+        <!-- Menggunakan komponen 'app-button' yang diimpor dengan teks "Hello" dengan tipe 'muted' dan 'processing' -->
+        <app-button
+          type="muted"
+          :processing="true"
+        >
+          Hello
+        </app-button>
+        <!-- Menggunakan komponen 'app-button' dengan teks "Khoirul" dengan tipe 'primary' -->
+        <app-button type="primary">Khoirul</app-button>
+        <!-- Menggunakan komponen 'app-button' dengan teks "Fahmi" dengan tipe 'secondary' -->
+        <app-button type="secondary">Fahmi</app-button>
       </div>
     </div>
     <script type="module">
-      // Mengimpor komponen AppButton dari file eksternal
-      import AppButton from "../js/components/AppButton.js";
-
-      // Mendefinisikan aplikasi Vue dengan komponen yang terdaftar
-      let app = {
-        components: {
-          // Mendaftarkan komponen 'app-button' yang diimpor
-          "app-button": AppButton,
-        },
-      };
-
-      // Membuat dan memasang aplikasi Vue pada elemen dengan id 'app'
-      Vue.createApp(app).mount("#app");
+      // Mengimpor komponen App dari file eksternal
+      import App from "../js/components/App.js";
+      Vue.createApp(App).mount("#app");
     </script>
   </body>
 </html>
