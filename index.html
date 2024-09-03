@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Laracast - Learn Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input
+        type="text"
+        v-model="greeting"
+      />
+      <p>
+        <!-- value dari data greeting di panggil dalam html -->
+        {{greeting}}
+        <!-- menghitung panjang dari value greeting -->
+        {{greeting.length}}
+      </p>
+    </div>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            // value awal dari data 'greeting' adalah "Hello, Vue"
+            greeting: "Hello, Vue",
+          };
+        },
+        mounted() {
+          setTimeout(
+            () => {
+              // mengubah data dengan batas waktu
+              this.greeting = "Changed";
+            },
+            // dalam tiga detik data akan berubah menjadi Changed
+            3000
+          );
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
