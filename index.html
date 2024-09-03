@@ -1,59 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  class="h-full"
+>
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Laracast - Learn Vue - Episode 2</title>
+    <title>Laracast - Learn Vue - Episode 3</title>
+    <!-- Memuat Vue.js versi 3 -->
     <script src="https://unpkg.com/vue@3"></script>
-    <style>
-      html,
-      body {
-        height: 100vh;
-      }
-      body {
-        /* Menggunakan tampilan grid untuk menempatkan konten di tengah */
-        display: grid;
-        /* Menempatkan konten di tengah secara horizontal dan vertikal */
-        place-items: center;
-      }
-      .bg-green {
-        background-color: green;
-      }
-      .bg-red {
-        background-color: red;
-      }
-    </style>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="h-full grid place-items-center">
     <div id="app">
-      <!-- menggunakan binding Vue untuk menambahkan kelas dinamis berdasarkan nilai
-      active dan Mengatur event 'click' untuk memanggil metode 'toggle'-->
-      <button
-        :class="active ? 'bg-green' : 'bg-red'"
-        v-on:click="toggle"
-      >
-        Click me
-      </button>
+      <section>
+        <!-- Menampilkan judul "In Progress" jika ada tugas yang sedang berlangsung -->
+        <h2
+          v-show="assigmentsInProgress.length"
+          class="font-bold"
+          >In Progress</h2
+        >
+        <ul class="mt-2">
+          <!-- Menampilkan daftar tugas yang sedang berlangsung -->
+          <li v-for="assigment in assigmentsInProgress">
+            <label>
+              <input
+                type="checkbox"
+                v-model="assigment.complete"
+                :key="assigment.id"
+              />
+              <!-- Menampilkan nama tugas -->
+              {{assigment.name}}
+            </label>
+          </li>
+        </ul>
+
+        <!-- Menampilkan judul "Completed" jika ada tugas yang telah selesai -->
+        <h2
+          v-show="assigmentsComplete.length"
+          class="mt-6 font-bold"
+          >Completed</h2
+        >
+        <ul class="mt-2">
+          <!-- Menampilkan daftar tugas yang telah selesai -->
+          <li v-for="assigment in assigmentsComplete">
+            <label>
+              <input
+                type="checkbox"
+                v-model="assigment.complete"
+                :key="assigment.id"
+              />
+              <!-- Menampilkan nama tugas -->
+              {{assigment.name}}
+            </label>
+          </li>
+        </ul>
+
+        <!-- ini memunculkan data yang ada dengan perubahan pada saat klik -->
+        <!-- <pre>
+            {{assigments}}
+        </pre> -->
+      </section>
     </div>
     <script>
-      Vue.createApp({
+      let app = {
         data() {
+          // Objek yang dikembalikan oleh fungsi data
           return {
-            // Data awal 'active' diatur ke 'false'
-            active: false,
+            // 'assigments' adalah properti data yang akan digunakan dalam template dan logika aplikasi
+            assigments: [
+              // Array ini berfungsi sebagai daftar (list) tugas
+              // Setiap elemen di dalam array adalah objek yang merepresentasikan satu tugas
+              { name: "Project 1", complete: false, id: 1 }, // Tugas pertama
+              { name: "Test 3", complete: false, id: 2 }, // Tugas kedua
+              { name: "Final Exam", complete: false, id: 3 }, // Tugas ketiga
+            ],
           };
         },
-        methods: {
-          // metode toggle
-          toggle() {
-            // untuk membalik nilai 'active' setiap kali tombol diklik
-            this.active = !this.active;
+        computed: {
+          // Computed property 'assigmentsComplete'
+          // Properti ini mengembalikan daftar tugas yang telah selesai.
+          // Ketika ada perubahan dalam data `assigments`, Vue akan secara otomatis
+          // menghitung ulang nilai ini, tetapi hanya jika diperlukan.
+          assigmentsComplete() {
+            return this.assigments.filter((a) => a.complete); // Memfilter tugas yang `complete` bernilai true
+          },
+          // Computed property 'assigmentsInProgress'
+          // Properti ini mengembalikan daftar tugas yang sedang dalam proses (belum selesai).
+          // Vue secara otomatis akan memperbarui nilai ini jika data `assigments` berubah.
+          assigmentsInProgress() {
+            return this.assigments.filter((a) => !a.complete); // Memfilter tugas yang `complete` bernilai false
           },
         },
-      }).mount("#app");
+      };
+      Vue.createApp(app).mount("#app");
     </script>
   </body>
 </html>
