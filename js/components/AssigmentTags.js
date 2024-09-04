@@ -2,13 +2,11 @@ export default {
   template: `
     <div class="flex gap-2 mt-4 mb-6">
       <button 
-        // Memancarkan event change dengan nilai tag yang dipilih
-        @click="$emit('change', tag)"                  
+        @click="$emit('update:modelValue', tag)"                  
         v-for="tag in tags"
         class="text-white border border-white rounded px-2 py-1 text-xs"
         :class="{          
-            // Membuat kondisi untuk tag yang aktif
-           'bg-white text-black transition ease-in-out duration-300': tag === currentTag
+           'bg-white text-black transition ease-in-out duration-300': tag === modelValue
         }"
       >
         {{ tag }}
@@ -17,7 +15,9 @@ export default {
  `,
   props: {
     initialTags: Array,
-    currentTag: String,
+    // modelValue adalah properti yang digunakan untuk mendapatkan nilai dari parent.
+    // Ini diikat dengan 'v-model' pada komponen parent, memungkinkan sinkronisasi nilai antara parent dan child.
+    modelValue: String,
   },
 
   computed: {
