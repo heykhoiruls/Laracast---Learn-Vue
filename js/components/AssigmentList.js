@@ -9,9 +9,6 @@ export default {
           <h2 class="font-bold">{{ title }}</h2>
           <p class="text-white">{{filterAssigment.length}}</p>
         </div>
-      
-        <!-- Menggunakan v-model untuk membuat binding dua arah antara properti 'currentTag' di komponen ini dan 'modelValue' di komponen AssigmentTags -->
-        <!-- Kita bisa menggunakan v-model dengan nama properti kustom, seperti v-model:currentTag="currentTag" -->
 
         <AssigmentTags
           v-model="currentTag"

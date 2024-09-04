@@ -15,8 +15,6 @@ export default {
  `,
   props: {
     initialTags: Array,
-    // modelValue adalah properti yang digunakan untuk mendapatkan nilai dari parent.
-    // Ini diikat dengan 'v-model' pada komponen parent, memungkinkan sinkronisasi nilai antara parent dan child.
     modelValue: String,
   },
 

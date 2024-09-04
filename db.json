@@ -1,0 +1,64 @@
+{
+  "assigments": [
+    {
+      "name": "Algebra",
+      "complete": false,
+      "id": 1,
+      "tag": "math"
+    },
+    {
+      "name": "Science Lab",
+      "complete": true,
+      "id": 2,
+      "tag": "science"
+    },
+    {
+      "name": "Mockingbird Analysis",
+      "complete": false,
+      "id": 3,
+      "tag": "reading"
+    },
+    {
+      "name": " Calculus Basics",
+      "complete": true,
+      "id": 4,
+      "tag": "math"
+    },
+    {
+      "name": "Ancient Civilizations",
+      "complete": false,
+      "id": 5,
+      "tag": "science"
+    },
+    {
+      "name": "The Great Gatsby Discussion",
+      "complete": true,
+      "id": 6,
+      "tag": "reading"
+    },
+    {
+      "name": "eometry in Architecture",
+      "complete": false,
+      "id": 7,
+      "tag": "math"
+    },
+    {
+      "name": "Climate Change Effects",
+      "complete": true,
+      "id": 8,
+      "tag": "science"
+    },
+    {
+      "name": "1984 by George Orwell Review",
+      "complete": false,
+      "id": 9,
+      "tag": "reading"
+    },
+    {
+      "name": "Trigonometry",
+      "complete": true,
+      "id": 10,
+      "tag": "math"
+    }
+  ]
+}
