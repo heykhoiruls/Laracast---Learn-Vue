@@ -1,11 +1,18 @@
 {
+  "name": "laracast-learn-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "serve": "npx serve",
-    "json-server": "json-server db.json --port=3001",
-    "start": "concurrently \"npm run serve\" \"npm run json-server\""
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.37"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "json-server": "^1.0.0-beta.2"
+    "@vitejs/plugin-vue": "^5.1.2",
+    "vite": "^5.4.1"
   }
 }
